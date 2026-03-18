@@ -97,9 +97,6 @@ for i in range (30):
     t.fd (i*2)
     t.left(45)
 
-
-
-
 mainloop()
 
 
