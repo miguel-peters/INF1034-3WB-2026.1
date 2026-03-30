@@ -16,6 +16,7 @@ def Draw_rect1(x,y,alt,larg,cor):
     t.fd(alt)
     t.lt(90)
     t.fd(larg)
+    t.lt(90)
     t.end_fill()
 
 def Draw_rect2(x,y,larg,alt,cor):
@@ -26,10 +27,10 @@ def Draw_rect2(x,y,larg,alt,cor):
     t.begin_fill() 
     t.fillcolor(cor)
     for _ in range(2):
-        t.lt(90)
         t.fd(larg)
         t.lt(90)
         t.fd(alt)
+        t.lt(90)
     t.end_fill()
 
 
@@ -40,6 +41,7 @@ def Draw_circle(x,y,raio,cor):
     t.color('black') 
     t.begin_fill() 
     t.fillcolor(cor)
+    t.rt(90)
     t.circle(raio)
     t.end_fill()
 
@@ -52,6 +54,7 @@ def indonésia():
 def japao():
     Draw_rect2(00,00,300,200,'white')
     Draw_circle(100,100,50,'red')
+    t.lt(90)
     sleep(3)
     t.clear()
 
@@ -60,6 +63,7 @@ def india():
     Draw_rect2(00,100,300,100,'white')
     Draw_rect2(00,200,300,100,'orange')
     Draw_circle(120,150,40,'orange')
+     t.lt(90)
     sleep(3)
     t.clear()
 
@@ -188,5 +192,44 @@ hungria()
 gabao()
 serraleoa()
 austria()
+
+
+bandeira = textinput('Bandeira', 'Qual a bandeira: ')
+if bandeira == 'indonésia': 
+    indonésia()
+elif bandeira == 'japão':
+    japao()
+elif bandeira == 'níger':
+    india()
+elif bandeira == 'EAU':
+    EAU()
+elif bandeira == 'rússia':
+    russia()
+elif bandeira == 'ucrânia':
+    ucrania()
+elif bandeira == 'armênia':
+    armenia()
+elif bandeira == 'alemanha':
+    alemanha()
+elif bandeira == 'holanda':
+    holanda()
+elif bandeira == 'lituânia':
+    lituania()
+elif bandeira == 'polônia':
+    polonia()
+elif bandeira == 'bulgária':
+    bulgaria()
+elif bandeira == 'yemen':
+    yemen()
+elif bandeira == 'bolívia':
+    bolivia()
+elif bandeira == 'hungria':
+    hungria()
+elif bandeira == 'gabão':
+    gabao()
+elif bandeira == 'serra leoa':
+    serraleoa()
+elif bandeira == 'áustria':
+    austria()
 
 mainloop()
