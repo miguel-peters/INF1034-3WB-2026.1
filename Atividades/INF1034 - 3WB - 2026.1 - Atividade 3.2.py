@@ -63,7 +63,7 @@ def india():
     Draw_rect2(00,100,300,100,'white')
     Draw_rect2(00,200,300,100,'orange')
     Draw_circle(120,150,40,'orange')
-     t.lt(90)
+    t.lt(90)
     sleep(3)
     t.clear()
 
