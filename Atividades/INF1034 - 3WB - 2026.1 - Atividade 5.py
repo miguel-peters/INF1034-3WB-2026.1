@@ -5,19 +5,26 @@ init()
 
 #Carregar imagem PNG do programa
 #Criar variável 
-#batman_img = image.load('batman.png')#mostrar caminho para pegar imagem (pasta/batman.png)
+mario_img = image.load('mario.png')#mostrar caminho para pegar imagem (pasta/batman.png)
 
 #Criar fonte
-#batman_font = font.Font('batmfa__.ttf', 50)
+mario_font = font.Font('SuperMario256.ttf', 25)
 
 #Carregar música
-#mixer.music.load('batman_1966.mp3')
-#mixer.music.play(-1)
+mixer.music.load('mario_musica_tema.mp3')
+mixer.music.play(-1)
 
-window = display.set_mode((1150,720))
+window = display.set_mode((1100,720))
 
 window.fill((152, 209, 250))
 
+# #DESAFIO EXTRA
+# x = 400
+# y = 100
+# x1 = 450
+# x2 = 500
+# x3 = 550
+# velocidade = 0.2
 
 while True:
     for ev in event.get():
@@ -25,27 +32,69 @@ while True:
             quit()
             sys.exit()
 
-    #Desenhar casa
+
     draw.rect(window, (72, 157, 37), (0, 600, 1280, 120))
+    
+    # Desenhar casa
     draw.rect(window, (100, 100, 100), (200, 400, 200, 200))
-    draw.polygon(window, (242, 136, 59), ((200, 400), (300, 250), (400,400)))
+    draw.polygon(window, (166, 60, 15), ((190, 400), (230, 300), (370,300), (410,400)))
     draw.rect(window, (13,22,100), (230, 480, 50, 80))
     draw.rect(window, (121,77,27), (300, 465, 65, 135))
     draw.circle(window, (0,0,0), (310, 530), 5)
 
-    #Desenhar árvore
+    # Desenhar árvore
     draw.rect(window, (121,77,27), (680,460,40,140))
     draw.circle(window, (72, 157, 37), (700,400), 75)
     
     #Desenhar sol
     draw.circle(window, (235, 242, 17), (100,100), 60)
+    draw.line(window, (235, 242, 17), (100,160), (100,230), (5))
+    draw.line(window, (235, 242, 17), (160, 100), (230, 100), (5))
+    draw.line(window, (235, 242, 17), (100, 40), (100, 0), (5))
+    draw.line(window, (235, 242, 17), (40, 100), (0, 100), (5))
+
+    # #Desenhar nuvem
+    
+    # x += velocidade
+    # x1 += velocidade
+    # x2 += velocidade
+    # x3 += velocidade
+    # if x > 1100:
+    #     x = 400
+    # else: 
+    #     x += velocidade
+    
+    # if x1 > 1100:
+    #     x = 450
+    # else:
+    #     x1 += velocidade
+    
+    # if x2 > 1100:
+    #     x = 500
+    # else:
+    #     x2 += velocidade
+    # if x3 > 1100:
+    #     x = 550
+    # else:
+    #     x3 += velocidade
+
+    draw.circle(window, (235,235,235), (400,100), 50)
+    draw.circle(window, (235,235,235), (450,100), 50)
+    draw.circle(window, (235,235,235), (500,100), 50)
+    draw.circle(window, (235,235,235), (550,100), 50)
+
+    draw.circle(window, (235,235,235), (700,200), 50)
+    draw.circle(window, (235,235,235), (750,200), 50)
+    draw.circle(window, (235,235,235), (800,200), 50)
+    draw.circle(window, (235,235,235), (850,200), 50)
+
 
     #Desenhar imagens
-    #window.blit(batman_img, (0,0))
-    #batman_img = transform.scale(batman_img, (200,200))
-
+    mario_img = transform.scale(mario_img, (100,150))
+    window.blit(mario_img, (450, 470))
+    
     #Desenhar texto
-    #batman_text = batman_font.render('I am Batman', True, (0,0,0))
-    #window.blit(batman_text, 100,200)
+    mario_text = mario_font.render('It is me, MARIO!', True, (0,0,0))
+    window.blit(mario_text, (410,650))
 
     display.update()
