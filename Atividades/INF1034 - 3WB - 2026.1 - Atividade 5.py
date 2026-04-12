@@ -15,16 +15,9 @@ mixer.music.load('mario_musica_tema.mp3')
 mixer.music.play(-1)
 
 window = display.set_mode((1100,720))
+# relogio = time.Clock()
 
 window.fill((152, 209, 250))
-
-# #DESAFIO EXTRA
-# x = 400
-# y = 100
-# x1 = 450
-# x2 = 500
-# x3 = 550
-# velocidade = 0.2
 
 while True:
     for ev in event.get():
@@ -53,35 +46,11 @@ while True:
     draw.line(window, (235, 242, 17), (100, 40), (100, 0), (5))
     draw.line(window, (235, 242, 17), (40, 100), (0, 100), (5))
 
-    # #Desenhar nuvem
-    
-    # x += velocidade
-    # x1 += velocidade
-    # x2 += velocidade
-    # x3 += velocidade
-    # if x > 1100:
-    #     x = 400
-    # else: 
-    #     x += velocidade
-    
-    # if x1 > 1100:
-    #     x = 450
-    # else:
-    #     x1 += velocidade
-    
-    # if x2 > 1100:
-    #     x = 500
-    # else:
-    #     x2 += velocidade
-    # if x3 > 1100:
-    #     x = 550
-    # else:
-    #     x3 += velocidade
-
-    draw.circle(window, (235,235,235), (400,100), 50)
+    #Desenhar nuvem    
     draw.circle(window, (235,235,235), (450,100), 50)
     draw.circle(window, (235,235,235), (500,100), 50)
     draw.circle(window, (235,235,235), (550,100), 50)
+    draw.circle(window, (235,235,235), (600,100), 50)
 
     draw.circle(window, (235,235,235), (700,200), 50)
     draw.circle(window, (235,235,235), (750,200), 50)
@@ -97,4 +66,6 @@ while True:
     mario_text = mario_font.render('It is me, MARIO!', True, (0,0,0))
     window.blit(mario_text, (410,650))
 
+    # relogio.tick(60)
     display.update()
+    
