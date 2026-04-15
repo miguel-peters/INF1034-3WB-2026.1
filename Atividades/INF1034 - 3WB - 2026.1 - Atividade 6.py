@@ -22,6 +22,7 @@ mixer.music.play(-1)
 pos_x = 450
 pos_x2 = 700
 background_color = (152, 209, 250)
+direçao = 1
 
 while running:
     clock.tick(60)
@@ -37,12 +38,14 @@ while running:
     # Update
     dt = clock.get_time()/1000 #em segundos
     keys = key.get_pressed()
-    if keys[K_d]:
-        pos_x = pos_x + 100 * dt
-        pos_x2 = pos_x2 + 100 * dt
-    elif keys[K_a]:
-        pos_x = pos_x - 100 * dt
-        pos_x2 = pos_x2 - 100 * dt
+
+    # Nuvens se mexendo
+    pos_x = pos_x + (100 * direçao) * dt
+    pos_x2 = pos_x2 + (100 * direçao) * dt 
+    if pos_x2 > 1100:
+        direçao = -1
+    elif pos_x < 0:
+        direçao = 1   
    
     # Desenhar tela
     window.fill(background_color)
