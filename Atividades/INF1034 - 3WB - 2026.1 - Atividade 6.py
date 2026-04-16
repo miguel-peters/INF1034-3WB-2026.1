@@ -14,15 +14,22 @@ mario_img = image.load('mario.png')#mostrar caminho para pegar imagem (pasta/bat
 # Criar fonte
 mario_font = font.Font('SuperMario256.ttf', 25)
 
-# Carregar música
-mixer.music.load('mario_musica_tema.mp3')
-mixer.music.play(-1)
+# # Carregar música
+# mixer.music.load('mario_musica_tema.mp3')
+# mixer.music.play(-1)
+pulo_mario = mixer.Sound('pulo_mario.mp3')
+moeda_mario = mixer.Sound('moeda_mario.mp3')
+toady = mixer.Sound('toady.mp3')
 
 # Definição de variáveis
 pos_x = 450
 pos_x2 = 700
+pos_x3= 850
 background_color = (152, 209, 250)
 direçao = 1
+sol_x = 100
+sol_y = 100
+estado = 'teclado'
 
 while running:
     clock.tick(60)
@@ -32,17 +39,54 @@ while running:
             running = False
         if ev.type == KEYDOWN:
             key_pressed = ev.key
-            if key_pressed == K_SPACE:
-                background_color = (50, 68, 168 )
+            if key_pressed == K_m:
+                estado = 'mouse'
+            elif key_pressed == K_l:
+                estado = 'teclado'
+        if ev.type == MOUSEBUTTONUP:
+            if ev.button == 1:
+                if sol_x > 366 and sol_x < 732:
+                    pulo_mario.play()
+                elif sol_x > 732:
+                    moeda_mario.play()
+                elif sol_x < 366:
+                    toady.play()
 
     # Update
     dt = clock.get_time()/1000 #em segundos
     keys = key.get_pressed()
+    
+    # Sol se mexendo com o teclado e mouse
+    if estado == 'mouse':
+        sol_x, sol_y = mouse.get_pos()
+    elif estado == 'teclado':
+        if keys[K_d]:
+            sol_x = sol_x + 300 * dt
+        elif keys[K_a]:
+            sol_x = sol_x - 300 * dt
+        elif keys[K_w]:
+            sol_y = sol_y - 300 * dt
+        elif keys[K_s]:
+            sol_y = sol_y + 300 * dt
+
+    if sol_x > 1100:
+        sol_x = 1100
+    elif sol_x < 0:
+        sol_x = 0
+
+    # Cor mudando de acordo com a posição do sol
+    if sol_x > 366 and sol_x < 732:
+        background_color = (227, 162, 11 )
+    elif sol_x > 732:
+        background_color = (50, 68, 168)
+    else:
+        background_color = (152, 209, 250)
 
     # Nuvens se mexendo
     pos_x = pos_x + (100 * direçao) * dt
     pos_x2 = pos_x2 + (100 * direçao) * dt 
-    if pos_x2 > 1100:
+    pos_x3 = pos_x3 + (100*direçao) * dt
+    if pos_x3 > 1100:
         direçao = -1
     elif pos_x < 0:
         direçao = 1   
@@ -65,11 +109,11 @@ while running:
     draw.circle(window, (72, 157, 37), (700,400), 75)
     
     #Desenhar sol
-    draw.circle(window, (235, 242, 17), (100,100), 60)
-    draw.line(window, (235, 242, 17), (100,160), (100,230), (5))
-    draw.line(window, (235, 242, 17), (160, 100), (230, 100), (5))
-    draw.line(window, (235, 242, 17), (100, 40), (100, 0), (5))
-    draw.line(window, (235, 242, 17), (40, 100), (0, 100), (5))
+    draw.circle(window, (235, 242, 17), (sol_x, sol_y), 60)
+    draw.line(window, (235, 242, 17), (sol_x, sol_y + 60), (sol_x,sol_y + 130), (5))
+    draw.line(window, (235, 242, 17), (sol_x + 60, sol_y), (sol_x + 130, sol_y), (5))
+    draw.line(window, (235, 242, 17), (sol_x, sol_y - 60), (sol_x, sol_y - 100), (5))
+    draw.line(window, (235, 242, 17), (sol_x - 60, sol_y), (sol_x - 100, sol_y), (5))
 
     #Desenhar nuvem    
     draw.circle(window, (235,235,235), (pos_x,100), 50)
@@ -80,7 +124,7 @@ while running:
     draw.circle(window, (235,235,235), (pos_x2,200), 50)
     draw.circle(window, (235,235,235), (pos_x2 + 50,200), 50)
     draw.circle(window, (235,235,235), (pos_x2 + 100,200), 50)
-    draw.circle(window, (235,235,235), (pos_x2 + 150,200), 50)
+    draw.circle(window, (235,235,235), (pos_x3,200), 50)
 
 
     #Desenhar imagens
