@@ -1,6 +1,6 @@
 from math import inf
 
-def conta():
+def conta2():
     num1 = float(input(''))
     operador = input('')
     num2 = float(input(''))
@@ -25,4 +25,4 @@ def conta():
         elif operador == '/':
             resposta /= num3
 
-conta()
+conta2()
