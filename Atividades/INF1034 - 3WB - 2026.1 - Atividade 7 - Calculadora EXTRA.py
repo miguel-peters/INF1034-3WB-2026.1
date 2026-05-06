@@ -29,8 +29,6 @@ resultadoSTR = '0'
 
 while running:
 
-    conta = input('')
-
     for ev in event.get():
         if ev.type == QUIT:
             running = False
