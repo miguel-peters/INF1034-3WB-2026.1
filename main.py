@@ -1,40 +1,30 @@
-# import pygame
+import pygame
+pygame.init()
 
-# # Inicialização
-# pygame.init()
-# tela = pygame.display.set_mode((400, 100))
-# fonte = pygame.font.SysFont(None, 40)
-# clock = pygame.time.Clock()
+# Configurações da tela
+screen = pygame.display.set_mode((400, 300))
+# Definir um retângulo (área clicável)
+button_rect = pygame.Rect(150, 100, 100, 50) # x, y, largura, altura
 
-# # Variáveis do Input
-# texto = ''
-# input_ativo = True
-
-# # Loop principal
-# rodando = True
-# while rodando:
-#     for event in pygame.event.get():
-#         if event.type == pygame.QUIT:
-#             rodando = False
+running = True
+while running:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
         
-#         # Capturar digitação
-#         if event.type == pygame.KEYDOWN and input_ativo:
-#             if event.key == pygame.K_RETURN:
-#                 print(f"Texto final: {texto}")
-#                 texto = '' # Limpa após enter
-#             elif event.key == pygame.K_BACKSPACE:
-#                 texto = texto[:-1] # Apaga último caractere
-#             else:
-#                 texto += event.unicode # Adiciona caractere digitado
+        # 1. Verificar se o mouse foi clicado
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            if event.button == 1: # 1 = botão esquerdo
+                # 2. Obter posição do clique
+                mouse_pos = event.pos
+                
+                # 3. Verificar se o clique foi dentro do retângulo
+                if button_rect.collidepoint(mouse_pos):
+                    print("Botão clicado!")
 
-#     # Desenhar na tela
-#     tela.fill((255, 255, 255)) # Fundo branco
-#     superficie_texto = fonte.render(texto, True, (0, 0, 0)) # Texto preto
-#     tela.blit(superficie_texto, (10, 30)) # Posição
-#     pygame.display.flip()
-#     clock.tick(30)
+    # Desenhar
+    screen.fill((0, 0, 0)) # Fundo preto
+    pygame.draw.rect(screen, (255, 0, 0), button_rect) # Retângulo vermelho
+    pygame.display.flip()
 
-# pygame.quit()
-
-senha = 'senha: tudobem'
-print(senha[7:])
+pygame.quit()
