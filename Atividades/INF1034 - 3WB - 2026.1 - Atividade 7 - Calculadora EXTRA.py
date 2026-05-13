@@ -1,6 +1,8 @@
 from pygame import *
 import sys
 
+# AO INVÉS DE FAZER VÁRIAS TECLAS, USAR UNICODE PARA ESCREVER OS NÚMEROS (MAIS FÁCIL)
+
 window = display.set_mode((1100,700))
 init()
 running = True
