@@ -84,10 +84,10 @@ t.pu()
 # t.pd()
 # drawStarFractal(t, 200)
 
-## Desenhando a árvore
-# t.goto(0, -200)
-# t.lt(90)
-# treeFractal(t, 80, 40, 20)
+# Desenhando a árvore
+t.goto(0, -200)
+t.lt(90)
+treeFractal(t, 80, 40, 20)
 
 # # Desenhando uma espiral
 # drawSpiral(t)
