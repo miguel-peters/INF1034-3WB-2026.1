@@ -136,6 +136,10 @@ while running:
                 modo_hist = '2'
             elif event.key == pygame.K_3:
                 modo_hist = '3'
+            
+            # PYGAME KEY RETURN -- pega a função do histograma 3 e ativa ela
+            # evevnt.unicode pra digitiar no pygame!               
+
     
     screen.fill((255, 255, 255))
 
